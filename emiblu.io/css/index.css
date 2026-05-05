@@ -157,17 +157,21 @@ body {
 
 .send-button {
   display: flex;
-  margin-top: 200px;
+  position: fixed;
+  top: 46%;
+  left: 50%;
+  transform: translateX(-50%);
   justify-content: center;
   align-items: center;
   max-width: 390px;
-  width: 100%;
+  width: 90%;
   height: 56px;
   border: none;
   border-radius: 8px;
-  padding: 16px 32px 16px 32px;
+  padding: 16px 32px;
   cursor: pointer;
   color: #fff;
+  z-index: 10;
   background-color: #2CA5E0;
 }
 
@@ -182,10 +186,20 @@ body {
 }
 
 .countdown-block {
-  margin-top: 16px;
+  position: fixed;
+  top: calc(46% + 64px);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
 
 .discount {
+  color: #ffffff;
+}
+
+#timer {
   color: #ff0000;
 }
 
@@ -197,6 +211,13 @@ body {
 }
 
 
+@media screen and (max-width: 768px) {
+  .send-button {
+    top: 50%;
+    width: 85%;
+  }
+}
+
 @media screen and (max-width: 400px) {
   #time-in-current-location {
     width: 100%;
@@ -205,7 +226,8 @@ body {
   }
 
   .send-button {
-    max-width: 343px;
+    top: 54%;
+    width: 85%;
   }
 
   .header-logo {

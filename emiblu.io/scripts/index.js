@@ -252,31 +252,23 @@
 window.addEventListener('load', () => {
   const timer = document.getElementById('timer')
   const updateTimer = (seconds) => {
-    const hours = Math.floor(seconds / 3600)
-    const minutes = Math.floor((seconds % 3600) / 60)
-    const remainingSeconds = seconds % 60
     if (timer) {
-      timer.innerHTML = `${hours}h ${minutes < 10 ? '0' : ''}${minutes}m ${
-        remainingSeconds < 10 ? '0' : ''
-      }${remainingSeconds}s`
+      timer.innerHTML = `0h 0m ${seconds}s`
     }
   }
 
   const startCountdown = () => {
-    const savedCountdownTime = localStorage.getItem('countdownTime')
-    let seconds =
-      savedCountdownTime > 0 ? parseInt(savedCountdownTime, 10) : (60 * 32) + 30
+    let seconds = 65
 
     updateTimer(seconds)
 
     const countdownInterval = setInterval(() => {
       seconds--
       updateTimer(seconds)
-      localStorage.setItem('countdownTime', seconds.toString())
 
       if (seconds <= 0) {
         clearInterval(countdownInterval)
-        startCountdown() // Restart the countdown
+        startCountdown()
       }
     }, 1000)
   }
