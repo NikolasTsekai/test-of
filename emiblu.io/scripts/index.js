@@ -250,29 +250,6 @@
   zw: 'Zimbabwe',
 }
 window.addEventListener('load', () => {
-  const timer = document.getElementById('timer')
-  const updateTimer = (seconds) => {
-    if (timer) {
-      timer.innerHTML = `0h 0m ${seconds}s`
-    }
-  }
-
-  const startCountdown = () => {
-    let seconds = 65
-
-    updateTimer(seconds)
-
-    const countdownInterval = setInterval(() => {
-      seconds--
-      updateTimer(seconds)
-
-      if (seconds <= 0) {
-        clearInterval(countdownInterval)
-        startCountdown()
-      }
-    }, 1000)
-  }
-
   const startAvailableCountdown = () => {
     const isAvailable = localStorage.getItem('isAvailable')
     const availableBlock = document.getElementById('available')
@@ -290,8 +267,6 @@ window.addEventListener('load', () => {
   }
 
   startAvailableCountdown()
-
-  startCountdown()
 
   const subtractDaysFromDate = (days) => {
     const currentDate = new Date()
