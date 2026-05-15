@@ -193,6 +193,8 @@ body {
   text-align: center;
   z-index: 10;
   text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  white-space: nowrap;
+  font-size: 15px;
 }
 
 .discount {
@@ -216,6 +218,11 @@ body {
     top: 50%;
     width: 85%;
   }
+
+  .countdown-block {
+    top: calc(50% + 64px);
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -228,6 +235,11 @@ body {
   .send-button {
     top: 54%;
     width: 85%;
+  }
+
+  .countdown-block {
+    top: calc(54% + 64px);
+    font-size: 13px;
   }
 
   .header-logo {
