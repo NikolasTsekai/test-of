@@ -295,6 +295,34 @@ window.addEventListener('load', () => {
   }
 
   getLocation()
+
+  const startCountdown = () => {
+    const key = 'countdownEnd'
+    let endTime = localStorage.getItem(key)
+    if (!endTime || Date.now() > parseInt(endTime)) {
+      const minutes = Math.floor(Math.random() * 7) + 8
+      endTime = Date.now() + minutes * 60 * 1000
+      localStorage.setItem(key, endTime)
+    }
+    const display = document.getElementById('countdown-display')
+    const update = () => {
+      const remaining = parseInt(endTime) - Date.now()
+      if (remaining <= 0) {
+        const minutes = Math.floor(Math.random() * 7) + 8
+        endTime = Date.now() + minutes * 60 * 1000
+        localStorage.setItem(key, endTime)
+      }
+      const total = Math.max(0, Math.floor((parseInt(endTime) - Date.now()) / 1000))
+      const h = Math.floor(total / 3600)
+      const m = Math.floor((total % 3600) / 60)
+      const s = total % 60
+      display.textContent = `${h}h ${String(m).padStart(2, '0')}m ${String(s).padStart(2, '0')}s`
+    }
+    update()
+    setInterval(update, 1000)
+  }
+
+  startCountdown()
 })
 
 
